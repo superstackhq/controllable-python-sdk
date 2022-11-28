@@ -1,5 +1,6 @@
 from .models import *
 from .http_client import HTTPClient
+from .decoder import decode_execution_results_from_json
 
 
 class Client:
@@ -75,7 +76,7 @@ class Client:
         response = self.http_client.execute(
             "CREATE_PROPERTY_VALUE", requests, timeout)
 
-        return ExecutionResults.__from_json(response)
+        return decode_execution_results_from_json(response)
 
     def read_property_value(self, read_property_requests: ReadPropertyRequests, timeout: float = None) -> ExecutionResults:
         timeout = timeout or self.default_read_property_value_timeout or 1
@@ -98,7 +99,7 @@ class Client:
         response = self.http_client.execute(
             "READ_PROPERTY_VALUE", requests, timeout)
 
-        return ExecutionResults.__from_json(response)
+        return decode_execution_results_from_json(response)
 
     def update_property_value(self, property_reference_value_pairs: PropertyReferenceValuePairs, timeout: float = None) -> ExecutionResults:
         timeout = timeout or self.default_update_property_value_timeout or 5
@@ -127,7 +128,7 @@ class Client:
         response = self.http_client.execute(
             "UPDATE_PROPERTY_VALUE", requests, timeout)
 
-        return ExecutionResults.__from_json(response)
+        return decode_execution_results_from_json(response)
 
     def delete_property_value(self, property_reference_value_pairs: PropertyReferenceValuePairs, timeout: float = None) -> ExecutionResults:
         timeout = timeout or self.default_delete_property_value_timeout or 5
@@ -152,4 +153,4 @@ class Client:
         response = self.http_client.execute(
             "DELETE_PROPERTY_VALUE", requests, timeout)
 
-        return ExecutionResults.__from_json(response)
+        return decode_execution_results_from_json(response)
