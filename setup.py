@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='controllable',
-    version='0.1.0',
+    version='v1-alpha',
     packages=find_packages(include=["controllable", "controllable.*"]),
     install_requires=[
         "requests"
