@@ -81,8 +81,9 @@ class ReadPropertyRequests:
 
 
 class ExecutionResult:
-    def __init__(self, success: bool, property_value: PropertyValue) -> None:
+    def __init__(self, success: bool, message: str, property_value: PropertyValue) -> None:
         self.success = success
+        self.message = message
         self.property_value = property_value
 
     def is_successful(self) -> bool:
@@ -90,6 +91,9 @@ class ExecutionResult:
 
     def get_property_value(self) -> PropertyValue:
         return self.property_value
+
+    def get_message(self) -> str:
+        return self.message
 
 
 class ExecutionResults:

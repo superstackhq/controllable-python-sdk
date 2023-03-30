@@ -16,6 +16,9 @@ def decode_execution_results_from_json(response_json) -> ExecutionResults:
         if "success" in execution_response:
             success = execution_response["success"]
 
+        if "message" in execution_response:
+            message = execution_response["message"]
+
         if "value" in execution_response:
             value_response = execution_response["value"]
 
@@ -43,6 +46,6 @@ def decode_execution_results_from_json(response_json) -> ExecutionResults:
         value = PropertyValue(value_data, value_rule,
                               value_segment, value_id)
 
-        execution_results.add(ExecutionResult(success, value))
+        execution_results.add(ExecutionResult(success, message, value))
 
     return execution_results
